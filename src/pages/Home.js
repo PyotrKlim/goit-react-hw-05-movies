@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
 import HomeItem from './HomeItem';
 import { optionsReguest } from 'service/optionsRequest';
 

@@ -1,5 +1,4 @@
 import { useCustomContext } from 'Context/Context';
-
 import { optionsReguest } from 'service/optionsRequest';
 
 const Movies = () => {
