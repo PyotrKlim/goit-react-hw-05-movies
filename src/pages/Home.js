@@ -20,7 +20,8 @@ const HomePage = () => {
 
   return (
     <>
-      <div>HomePage Trending today</div>
+      <h1>Trending today</h1>
+
       <ul>
         {name.map(({ id, title }) => (
           <HomeItem title={title} id={id} key={id} />

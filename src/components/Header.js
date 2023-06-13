@@ -9,6 +9,8 @@ const StyledLink = styled(NavLink)`
 `;
 const Navs = styled.nav`
   display: flex;
+  border-bottom: 1px solid grey;
+  box-shadow: grey 0px 2px 4px;
 `;
 const Nav = styled.div`
   padding: 14px;

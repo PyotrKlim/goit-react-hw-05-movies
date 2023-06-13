@@ -1,8 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const HomeItem = ({ title, id }) => {
   if (title) {
-    return <li id={id}>{title}</li>;
+    return (
+      <Link to={`/movies/${id}`}>
+        <li id={id}>{title}</li>
+      </Link>
+    );
   }
 };
 

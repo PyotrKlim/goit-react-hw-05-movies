@@ -1,5 +1,10 @@
 import { useCustomContext } from 'Context/Context';
 import { optionsReguest } from 'service/optionsRequest';
+import styled from 'styled-components';
+
+const Form = styled.form`
+  padding: 14px;
+`;
 
 const Movies = () => {
   const { movies, setMovies } = useCustomContext();
@@ -35,7 +40,7 @@ const Movies = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <input
           value={movies}
           onChange={handleChange}
@@ -48,7 +53,7 @@ const Movies = () => {
         <button type="submit">
           <span>Search</span>
         </button>
-      </form>
+      </Form>
       {data.length > 0 && (
         <ul>
           {data.map(({ id, title }) => (
