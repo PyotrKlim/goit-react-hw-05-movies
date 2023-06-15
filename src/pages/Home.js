@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
-import HomeItem from './HomeItem';
+import HomeItem from '../components/HomeItem';
 import { optionsReguest } from 'service/optionsRequest';
 
 const HomePage = () => {

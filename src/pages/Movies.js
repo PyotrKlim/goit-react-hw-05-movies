@@ -1,4 +1,5 @@
 import { useCustomContext } from 'Context/Context';
+import { Link, useLocation } from 'react-router-dom';
 import { optionsReguest } from 'service/optionsRequest';
 import styled from 'styled-components';
 
@@ -10,8 +11,9 @@ const Movies = () => {
   const { movies, setMovies } = useCustomContext();
   const { data, setData } = useCustomContext();
 
-  const handleChange = e => {
-    const { value } = e.currentTarget;
+  const locationMovies = useLocation();
+
+  const handleChange = ({ target: { value } }) => {
     setMovies(value);
   };
 
@@ -50,16 +52,16 @@ const Movies = () => {
           autoFocus
           placeholder="Movie title search"
         />
-        <button type="submit">
-          <span>Search</span>
-        </button>
+        <button type="submit">Search</button>
       </Form>
       {data.length > 0 && (
         <ul>
           {data.map(({ id, title }) => (
-            <li id={id} key={id}>
-              {title}
-            </li>
+            <Link to={`/movies/${id}`} state={locationMovies}>
+              <li id={id} key={id}>
+                {title}
+              </li>
+            </Link>
           ))}
         </ul>
       )}

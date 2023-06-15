@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { optionsReguest } from 'service/optionsRequest';
 import styled from 'styled-components';
 
@@ -38,6 +38,8 @@ const InfoBox = styled.div`
 const MovieDetails = () => {
   const [name, setName] = useState({});
 
+  const locationDetails = useLocation();
+
   const params = useParams();
   const movieId = params.movieId;
 
@@ -57,7 +59,9 @@ const MovieDetails = () => {
 
   return (
     <>
-      <button>&larr; Go back</button>
+      <Link to={locationDetails.state?.pathname}>
+        <button>&larr; Go back</button>
+      </Link>
       <Movie>
         <img
           height="300"
@@ -84,8 +88,12 @@ const MovieDetails = () => {
       <InfoBox>
         <p>Additional infomation</p>
         <Info>
-          <Link to="cast">Cast</Link>
-          <Link to="reviews">Reviews</Link>
+          <Link to="cast" state={locationDetails.state}>
+            Cast
+          </Link>
+          <Link to="reviews" state={locationDetails.state}>
+            Reviews
+          </Link>
         </Info>
       </InfoBox>
       <Outlet />
