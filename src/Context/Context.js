@@ -7,13 +7,13 @@ export const useCustomContext = () => {
 };
 
 const Context = ({ children }) => {
-  const [movies, setMovies] = useState('');
+  const [reguestText, setReguestText] = useState('');
   const [data, setData] = useState([]);
   return (
     <ContextAlert.Provider
       value={{
-        movies: movies,
-        setMovies: setMovies,
+        reguestText: reguestText,
+        setReguestText: setReguestText,
         data: data,
         setData: setData,
       }}

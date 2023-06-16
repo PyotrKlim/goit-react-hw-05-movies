@@ -1,16 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { optionsReguest } from 'service/optionsRequest';
-import styled from 'styled-components';
-
-const Container = styled.div`
-  display: flex;
-  margin-top: 10px;
-  border-bottom: 1px solid grey;
-  box-shadow: grey 0px 2px 4px;
-  flex-direction: column;
-  padding: 10px;
-`;
+import { fetchCast } from 'services/api';
+import Container from './CastCSS';
 
 const Cast = () => {
   const [nameCast, setNameCast] = useState({});
@@ -19,13 +10,7 @@ const Cast = () => {
   const movieId = params.movieId;
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`,
-      optionsReguest
-    )
-      .then(response => {
-        return response.json();
-      })
+    fetchCast(movieId)
       .then(data => setNameCast(data))
       .catch(err => console.error(err));
   }, [movieId]);
@@ -38,7 +23,11 @@ const Cast = () => {
         <div key={id}>
           <img
             height="100"
-            src={`https://image.tmdb.org/t/p/w500/${profile_path}`}
+            src={
+              profile_path
+                ? `https://image.tmdb.org/t/p/w500/${profile_path}`
+                : require('img/poster.jpg')
+            }
             alt="poster"
           />
           <p>{name}</p>

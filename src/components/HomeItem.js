@@ -2,15 +2,15 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const HomeItem = ({ title, id }) => {
-  const locationHomItem = useLocation();
+  const location = useLocation();
 
-  if (title) {
-    return (
-      <Link to={`/movies/${id}`} state={locationHomItem}>
-        <li id={id}>{title}</li>
+  return (
+    <li>
+      <Link to={`/movies/${id}`} state={location}>
+        {title}
       </Link>
-    );
-  }
+    </li>
+  );
 };
 
 export default HomeItem;

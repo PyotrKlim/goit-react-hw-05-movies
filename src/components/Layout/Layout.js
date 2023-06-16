@@ -1,11 +1,7 @@
-import Header from 'components/Header';
+import Header from 'components/Header/Header';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import styled from 'styled-components';
-
-const Conteiner = styled.div`
-  padding: 14px;
-`;
+import Conteiner from './LayoutCSS';
 
 const Layout = () => {
   return (
