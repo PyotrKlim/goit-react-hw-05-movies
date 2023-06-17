@@ -16,7 +16,7 @@ const Movies = () => {
     fetchMoviesByName(reguestText)
       .then(data => setData(data.results))
       .catch(err => console.error(err));
-  }, [searchName, setData]);
+  }, [searchName, setData, reguestText]);
 
   const handleChange = ({ target: { value } }) => {
     setReguestText(value);
