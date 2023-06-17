@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { useParams, useLocation } from 'react-router-dom';
 import { fetchMovieDetails } from 'services/api';
@@ -20,7 +20,7 @@ const MovieDetails = () => {
   const GenresArr = movieData.genres;
 
   return (
-    <>
+    <Suspense>
       <Css.GoBackLink to={locationDetails.state?.from ?? '/'}>
         &larr; Go back
       </Css.GoBackLink>
@@ -64,7 +64,7 @@ const MovieDetails = () => {
         </Css.Info>
       </Css.InfoBox>
       <Outlet />
-    </>
+    </Suspense>
   );
 };
 

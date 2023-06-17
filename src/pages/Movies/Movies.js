@@ -1,6 +1,6 @@
 import { useCustomContext } from 'Context/Context';
 import { MovieList } from 'components/MovieList';
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { fetchMoviesByName } from 'services/api';
 import { Form } from './MoviesCSS';
@@ -16,7 +16,7 @@ const Movies = () => {
     fetchMoviesByName(reguestText)
       .then(data => setData(data.results))
       .catch(err => console.error(err));
-  }, [searchName, setData, reguestText]);
+  }, [searchName, setData]);
 
   const handleChange = ({ target: { value } }) => {
     setReguestText(value);
@@ -34,7 +34,7 @@ const Movies = () => {
   };
 
   return (
-    <>
+    <Suspense>
       <Form onSubmit={handleSubmit}>
         <input
           value={reguestText}
@@ -48,7 +48,7 @@ const Movies = () => {
         <button type="submit">Search</button>
       </Form>
       {data.length > 0 && <MovieList movies={data} />}
-    </>
+    </Suspense>
   );
 };
 export default Movies;
